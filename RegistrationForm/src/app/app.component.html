@@ -1,0 +1,81 @@
+<header>
+  REGISTRATION FORM
+</header>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" novalidate>
+  <div class="form">
+  <h4>Registration Details</h4>
+  <!-- <div class="form-group"
+         [ngClass]="{
+        'has-danger': firstName.invalid && (firstName.dirty || firstName.touched),
+        'has-success': firstName.valid && (firstName.dirty || firstName.touched)
+      }">
+      <label>First Name</label>
+      <input type="text"
+             class="form-control"
+             formControlName="firstName"
+             required>
+      <div class="form-control-feedback"
+           *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+           <strong *ngIf="fname.errors?.required">First Name is required</strong>
+           <strong *ngIf="fname.errors?.minlength">First Name length must be greated than
+             {{fname.errors?.minlength.requiredLength}} characters.
+           </strong>
+      </div>
+
+    </div> -->
+    <!--  -->
+    <!--  -->
+    
+  <div class="form-group">
+    <input type="text" placeholder="First Name" class="form-control" formControlName="fname"
+      [ngClass]="{'is-invalid': fname.errors && (fname.touched || fname.dirty), 'is-valid':fname.valid}">
+    <div class="invalid-feedback">
+      <strong *ngIf="fname.errors?.required">First Name is required</strong>
+      <strong *ngIf="fname.errors?.minlength">First Name length must be greated than
+        {{fname.errors?.minlength.requiredLength}} characters.
+      </strong>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="text" placeholder="Last Name" class="form-control" formControlName="lastname"
+      [ngClass]="{'is-invalid': lastname.errors && (lastname.touched || lastname.dirty), 'is-valid':lastname.valid}">
+    <div class="invalid-feedback">
+      <strong *ngIf="lastname.errors?.required">Last Name is required</strong>
+      <strong *ngIf="lastname.errors?.minlength">Last Name length must be greated than
+        {{lastname.errors?.minlength.requiredLength}} character.
+      </strong>
+    </div>
+  </div>
+
+
+  <div class="form-group" [ngClass]="{
+        'has-danger': email.invalid && (email.dirty || email.touched),
+        'has-success': email.valid && (email.dirty || email.touched)
+   }">
+    <input type="email" placeholder="Email" class="form-control" formControlName="email">
+    <div class="form-control-feedback" *ngIf="email.errors && (email.dirty || email.touched)">
+      <strong *ngIf="email.errors.required">Email is required</strong>
+      <strong *ngIf="email.errors.pattern">The email address must contain at least the @ character</strong>
+    </div>
+  </div>
+
+  <div class="form-group" [ngClass]="{
+     'has-danger': password.invalid && (password.dirty || password.touched),
+     'has-success': password.valid && (password.dirty || password.touched)
+     }">
+    <input type="password" placeholder="Password" class="form-control" formControlName="password" required>
+    <div class="form-control-feedback" *ngIf="password.errors && (password.dirty || password.touched)">
+      <strong *ngIf="password.errors.required">Password is required</strong>
+      <strong *ngIf="password.errors.minlength">Password must be 8 characters Long, we need another
+        {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} characters </strong>
+    </div>
+  </div>
+  <button type="submit" style="vertical-align:middle" class="button"><span>Submit</span></button>
+  <button class="button" style="vertical-align:middle"><span>Reset</span></button>
+  </div>
+</form>
+<footer>
+  <p>Made With <img src='./../assets/Vector.svg'> By ProGrad</p>
+</footer>
