@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
   lastname: FormControl;
   email: FormControl;
   password: FormControl;
+  isValidFormSubmitted = null;
+
   ngOnInit(): void {
     this.fname = new FormControl('', [
       Validators.required,
@@ -40,9 +42,13 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    alert(
-      'Form Submitted succesfully!!!\n Check the values in browser console.'
-    );
+    this.isValidFormSubmitted = false;
+    if (this.myForm.invalid) {
+      return;
+    }
+    this.isValidFormSubmitted = true;
+    alert('Form Submitted succesfully');
+    this.myForm.reset();
   }
   
 }
